@@ -1,0 +1,28 @@
+@import './base.css';
+
+:root {
+  --rat-2-color: rgb(156, 243, 176);
+  --rat-3-color: rgb(129, 206, 255);
+  --rat-4-color: rgb(201, 131, 237);
+  --rat-5-color: rgb(255, 246, 145);
+}
+
+.rat-2 {
+  background-color: var(--rat-2-color);
+}
+
+.rat-3 {
+  background-color: var(--rat-3-color);
+}
+
+.rat-4 {
+  background-color: var(--rat-4-color);
+}
+
+.rat-5 {
+  background-color: var(--rat-5-color);
+}
+
+body {
+  padding: 10px;
+}
