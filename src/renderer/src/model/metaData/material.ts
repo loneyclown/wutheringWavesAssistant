@@ -1,8 +1,8 @@
 // 使用 import.meta.glob 批量导入图片并生成映射
-const images = import.meta.glob('../assets/image/material/*.png', { eager: true })
+const images = import.meta.glob('../../assets/image/material/*.png', { eager: true })
 const imageMap = Object.entries(images).reduce(
   (acc, [key, value]) => {
-    const fileName = key.replace('../assets/image/material/', '').replace('.png', '')
+    const fileName = key.replace('../../assets/image/material/', '').replace('.png', '')
     acc[fileName] = (value as any).default
     return acc
   },
@@ -13,7 +13,6 @@ interface IMaterialData {
   name: string
   img: string
   rat: number
-  num?: number
 }
 
 const materialData: IMaterialData[] = [
@@ -408,5 +407,14 @@ const materialData: IMaterialData[] = [
     rat: 3
   }
 ]
+
+interface IMaterialMap {
+  [key: string]: IMaterialData
+}
+
+export const materialMap: IMaterialMap = materialData.reduce((acc, item) => {
+  acc[item.name] = item
+  return acc
+}, {} as IMaterialMap)
 
 export default materialData

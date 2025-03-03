@@ -7,7 +7,7 @@ import {
   NumberInput,
   ScrollShadow
 } from '@heroui/react'
-import materialData from '@renderer/model/material'
+import materialData from '@renderer/model/metaData/material'
 import classNames from 'classnames'
 
 function Backpack(): JSX.Element {

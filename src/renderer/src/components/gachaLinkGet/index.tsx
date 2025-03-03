@@ -13,8 +13,9 @@ function GachaLinkGet(): JSX.Element {
 
       const logPath = window.api.path.join(newFilePath, 'Saved', 'Logs', 'Client.log')
       const content: string = window.api.fs.readFileSync(logPath, 'utf-8')
-      const regex =
-        /https:\/\/aki-gm-resources.aki-game.com\/aki\/gacha\/index.html#\/record\?svr_id=([a-zA-Z0-9])*&player_id=(\d+)(.*)",/g
+      // const regex =
+      //   /https:\/\/aki-gm-resources.aki-game.com\/aki\/gacha\/index.html#\/record\?svr_id=([a-zA-Z0-9])*&player_id=(\d+)(.*)",/g
+      const regex = /https.*\/aki\/gacha\/index\.html#\/record[?=&\w-]+/g
       const matches = content.matchAll(regex)
       let linkStr = ''
       for (const match of matches) {
@@ -74,11 +75,6 @@ function GachaLinkGet(): JSX.Element {
         </CardBody>
       </Card>
     </div>
-    // <>
-    //   <div className="relative isolate overflow-hidden w-full h-full">
-
-    //   </div>
-    // </>
   )
 }
 

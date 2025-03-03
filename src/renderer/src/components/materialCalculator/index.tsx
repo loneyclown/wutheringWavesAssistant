@@ -10,9 +10,15 @@ import {
   SelectItem,
   Slider
 } from '@heroui/react'
-import catalogue from '@renderer/model/catalogue'
+import { default as catalogue, catalogueDataMap } from '@renderer/model/metaData/catalogue'
+import React from 'react'
 
 function MaterialCalculator(): JSX.Element {
+  const [cData, setCData] = React.useState<any>([
+    {
+      ...catalogueDataMap.菲比
+    }
+  ])
   const LiItem = () => (
     <div className="flex w-full justify-between gap-4">
       <div className="flex flex-1 gap-12">
@@ -143,12 +149,17 @@ function MaterialCalculator(): JSX.Element {
             <Button>添加角色</Button>
           </div>
           <Accordion variant="shadow" selectionMode="multiple">
-            <AccordionItem key="1" aria-label="Accordion 1" title="菲比">
+            {cData.map((item) => (
+              <AccordionItem key={item.id} aria-label={item.name} title={item.name}>
+                <LiItem />
+              </AccordionItem>
+            ))}
+            {/* <AccordionItem key="1" aria-label="Accordion 1" title="菲比">
               <LiItem />
             </AccordionItem>
             <AccordionItem key="2" aria-label="Accordion 2" title="坎特蕾拉">
               <LiItem />
-            </AccordionItem>
+            </AccordionItem>*/}
           </Accordion>
         </CardBody>
       </Card>
